@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+    ServerName kelas.example.edu
+    Redirect permanent / https://kelas.example.edu/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName kelas.example.edu
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/kelas.example.edu/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/kelas.example.edu/privkey.pem
+
+    ProxyRequests Off
+    ProxyPreserveHost On
+    ProxyAddHeaders On
+    RequestHeader set X-Forwarded-Proto "https"
+    RequestHeader set X-Forwarded-Port "443"
+
+    ProxyPass / http://127.0.0.1:3001/ retry=0
+    ProxyPassReverse / http://127.0.0.1:3001/
+</VirtualHost>
