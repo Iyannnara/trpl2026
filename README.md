@@ -42,7 +42,7 @@ Set `NODE_ENV=production`, secret acak yang kuat, lalu jalankan `npm run build` 
 
 Backend memakai Express, SQLite, Argon2id untuk hash NIM, cookie sesi `HttpOnly`/`SameSite`, token CSRF, rate limit login/unggahan, Helmet, validasi Zod, dan query berparameter. Endpoint jadwal/tugas memeriksa peran admin. Completion tugas terikat ke pengguna dari sesi. Foto memakai nama acak, disimpan di direktori privat, dan signature file diperiksa di server.
 
-Workbook roster belum tersedia di filesystem container ini, jadi database belum memiliki akun dan login akan ditolak sampai roster diimpor. `ROSTER_XLSX_PATH=./private/roster.xlsx` mengatur `Aura` dan nama lengkap `I Gusti Ayu Diah Permata Sukmahartawan` sebagai pencocok admin; importer berhenti jika setiap pencocok tidak cocok tepat satu anggota. Nama/NIM tidak tertanam di frontend, NIM tidak disimpan plaintext, dan nomor telepon di kolom nama tidak diimpor. Belum ada tugas awal; admin dapat menambahkannya sesudah import akun.
+Workbook roster belum tersedia di filesystem container ini, jadi database belum memiliki akun dan login akan ditolak sampai roster diimpor. `ROSTER_XLSX_PATH=./private/roster.xlsx` mengatur nama lengkap `I Gusti Ayu Diah Permata Sukmahartawan` sebagai pencocok admin; importer berhenti jika setiap pencocok tidak cocok tepat satu anggota. Nama/NIM tidak tertanam di frontend, NIM tidak disimpan plaintext, dan nomor telepon di kolom nama tidak diimpor. Belum ada tugas awal; admin dapat menambahkannya sesudah import akun.
 
 Mode development memakai HTTP lokal dan secret sesi sementara; jangan diekspos ke internet atau digunakan untuk data produksi. Produksi memerlukan HTTPS, `NODE_ENV=production`, secret kuat, backup/perlindungan file SQLite, dan konfigurasi reverse proxy yang benar.
 
